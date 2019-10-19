@@ -9,7 +9,7 @@ from shutil import copytree,ignore_patterns
 1、copyTree
 2、os.path.exist()
 3、strip去掉readlines的换行符
---------v1.0----------
+--------v1.0.0----------
 '''
 
 try:
