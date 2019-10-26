@@ -1,6 +1,8 @@
-常用git命令：
+﻿常用git命令：
 1、提交commit到分支python_demo
-git push --set-upstream origin python_demo
+git -a -m "输入你需要修改的内容"
+git status 查看状态
+git push就会提交
 2、本地库打标签
 git tag -a v0.1.0 -m "copyFile初始版本，固定输出目录"
 3、提交所有标签到远程库中
