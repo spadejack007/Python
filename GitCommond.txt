@@ -1,0 +1,7 @@
+常用git命令：
+1、提交commit到分支python_demo
+git push --set-upstream origin python_demo
+2、本地库打标签
+git tag -a v0.1.0 -m "copyFile初始版本，固定输出目录"
+3、提交所有标签到远程库中
+git push origin --tags
