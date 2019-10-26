@@ -29,3 +29,5 @@
 	Switched to branch 'master'
 	$ git merge iss53//将分支iss53合并到主分支上
 	Merge made by the 'recursive' strategy.
+7、切换分支
+	git switch python_demo //python_demo为分支名字
