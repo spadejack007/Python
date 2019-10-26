@@ -1,6 +1,6 @@
 ﻿常用git命令：
 1、提交commit到分支python_demo
-git -a -m "输入你需要修改的内容"
+git commit -a -m "输入你需要修改的内容"
 git status 查看状态
 git push就会提交
 2、本地库打标签
