@@ -1,0 +1,35 @@
+﻿常用git命令：
+1、提交commit到分支python_demo
+	git commit -a -m "输入你需要修改的内容"
+	git status 查看状态
+	git push就会提交
+2、本地库打标签
+	git tag -a v0.1.0 -m "copyFile初始版本，固定输出目录"
+3、提交所有标签到远程库中
+	git push origin --tags
+4、vi编辑器
+	//   vi（vim,文本编辑器） 操作
+	1，终端写入vi进入界面
+	2，按i进入插入模式
+	3，写入你想写的内容
+	4，esc键退出插入模式，进入命令行模式
+	5，写入:w a.txt 创建a.txt，并将写入内容保存在a.txt
+	6，:wq 保存并离开vi   //  :q!强行退出vi
+5、<!--  git常用命令-->
+	git init 在当前文件夹创建一个git仓库
+	git add a.txt 将文件a.txt 添加到暂存区//没错的话不会报错，没提示返回
+	git status     查看状态//可看现状态有什么文件在暂存区
+	git cmmit -m "version 1" // 将暂存区的文件，保存版本，并添加注释“version 1”
+	git log  查看提交记录
+	git reflog   查看版本信息
+	git reset --hard HEAD^^^^   //回退到上*4个版本，，每个^为一个版本
+	git rset --hard XX 回退到XX特征码的版本号
+6、分支合并
+	$ git checkout master  //先checkout主分支
+	Switched to branch 'master'
+	$ git merge iss53//将分支iss53合并到主分支上
+	Merge made by the 'recursive' strategy.
+7、切换分支
+	git switch python_demo //python_demo为分支名字
+8、获取分支代码到本地
+	git pull//完整格式比较复杂，在本地分支中执行这个就可以把服务器上的代码拉下来了
