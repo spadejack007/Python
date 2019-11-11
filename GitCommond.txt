@@ -25,11 +25,9 @@
 	git reset --hard HEAD^^^^   //回退到上*4个版本，，每个^为一个版本
 	git rset --hard XX 回退到XX特征码的版本号
 6、分支合并
-	$ git checkout master  //先checkout主分支
-	Switched to branch 'master'
-	$ git merge iss53//将分支iss53合并到主分支上
-	Merge made by the 'recursive' strategy.
-7、切换分支
-	git switch python_demo //python_demo为分支名字
-8、获取分支代码到本地
-	git pull//完整格式比较复杂，在本地分支中执行这个就可以把服务器上的代码拉下来了
+    git checkout master //切换分支命令一，后面master为分支名字
+    git switch python_demo //切换分支命令二，python_demo为分支名字
+    //首先需要将分支切换到主分支上，将分支iss53合并到主分支上
+    git merge --no-ff -m "合并本地python_demo到master分支上" python_demo
+7、 获取分支代码到本地
+    git pull//完整格式比较复杂，在本地分支中执行这个就可以把服务器上的代码拉下来了
