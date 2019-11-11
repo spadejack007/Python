@@ -31,3 +31,5 @@
 	Merge made by the 'recursive' strategy.
 7、切换分支
 	git switch python_demo //python_demo为分支名字
+8、获取分支代码到本地
+	git pull//完整格式比较复杂，在本地分支中执行这个就可以把服务器上的代码拉下来了
