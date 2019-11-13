@@ -1,5 +1,5 @@
 '''
-练习：同步锁
+练习：线程锁
 threading 模块提供了Lock和RLock两个类
 1、threading.Lock:它是基本的锁对象，每次只能锁定一次，其余的锁请求，需要等待锁释放后才能获取。
 2、threading.RLock:它代表可重入锁，同一个线程中可以多次锁定，也可以多次释放。该锁的acquire()和Release()方法必须成对出现
