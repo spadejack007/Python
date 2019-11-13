@@ -1,6 +1,6 @@
 '''
-练习：线程通信:
-a、使用Condition实现线程通信
+练习：线程通信(一):
+a、使用Condition实现线程通信(实例)
 b、使用Queue控制线程通信
 c、使用Event控制线程通信
 ******************************************
@@ -13,7 +13,6 @@ notify():唤醒Condition池内的单个线程，该线程自动调用acquire()�
 notify_all():唤醒在该Condition等待池中的所有线程并通知它们。
 '''
 import threading
-
 
 class Account:
 
