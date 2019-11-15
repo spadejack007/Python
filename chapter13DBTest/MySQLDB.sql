@@ -203,8 +203,88 @@ select * from student as s left join classes as c on s.cls_id=c.id;
 --查询的结果为两个表匹配到的数据，对于左表中不存在的值用null来填充
 select * from student as s right join classes as c on s.cls_id=c.id;
 
+'''5.4 子查询'''
+--标量子查询,子查询的是一个数据(一行一列)
+select * from student where age>(select avg(age) from student);
+--查询班级内还有学生的班级名称(一列多行)
+select name from classes where id in (select class_id from student);
+--查询班级年龄最大，身高最高的学生信息
+select * from student where (height,age)=(select max(height),max(age) from student);
 
-'''FAQ'''
+
+'''6 视图'''
+'''
+视图就是一条select语句执行的结果。
+视图就是若干张基本表的引用，一张虚表，查询语句执行的结果，不存储具体的数据(基本数据变化后，视图也跟着变化)
+'''
+
+--定义视图；建议视图名命名时以"v_"开头
+create view 视图名 as select语句;
+--查看视图
+show tables;--也会显示出所有的视图来
+--使用视图
+select * from 视图表名;
+--删除视图
+drop view 视图名;
+
+'''7、事务'''
+'''
+所谓事务，它是一个操作序列，要么都执行完毕，要么都不执行。它是一个不可分割的单位。
+事务的四大特征：ACID:原子性（atomicity）、一致性（conssistency）、隔离性（isolation）、持久性（durability）
+MySQL默认打开自动提交事务的方法，可以通过 SET AUTOCOMMIT=0;0 禁止自动提交；1 开启自动提交；
+'''
+--显示开启事务
+begin  --开启事务方法一
+start transaction  --开启事务方法二
+--回滚事务
+rollback 
+--提交事务
+commit
+
+'''8、索引'''
+'''
+索引是一种特殊的文件，有两中索引：单列索引和多列索引.索引能够大大提高查询速度
+一般是根据我们查询语句的where 语句后面的字段列上建立索引
+比喻：建立索引的表格就像是一辆兰博基尼跑车，而不建立索引的表格就像是一个人力三轮车
+索引的理解可以参考这篇文章 https://www.jb51.net/article/133625.htm
+'''
+--创建索引
+create index 索引名称 on 表名(字段名(字段长度))
+--查看索引
+show index from 表名；
+--删除索引
+drop index  索引名称 on 表名；
+
+'''9、运行时间监控'''
+--设置时间监控
+SET RPFILING=0;--0 关闭时间监控；1 打开时间监控
+--查看时间监控
+SHOW PROFILES;	
+
+'''10、MySQL账户管理'''
+'''
+在生产环境下操作数据库时，绝对不可以使用root账户连接，而是创建特定的账户，授予这个账户特定的操作权限，然后连接进行操作，主要的操作就是数据的crud
+MySQL账户体系：根据账户所具有的权限的不同，MySQL的账户可以分为以下几种
+服务实例级账号：，启动了一个mysqld，即为一个数据库实例；如果某用户如root,拥有服务实例级分配的权限，那么该账号就可以删除所有的数据库、连同这些库中的表
+数据库级别账号：对特定数据库执行增删改查的所有操作
+数据表级别账号：对特定表执行增删改查等所有操作
+字段级别的权限：对某些表的特定字段进行操作
+存储程序级别的账号：对存储程序进行增删改查的操作
+账户的操作主要包括创建账户、删除账户、修改密码、授权权限等
+'''
+--修改权限
+grant 权限名称 on 数据库 to 账户@主机 with grant option;
+--修改密码
+--使用root登录，修改mysql数据库的user表
+--使用password（）函数进行密码加密
+update user set authentication_string=password("新密码") where user="用户名";
+--修改密码后需要刷新权限：
+flush privileges;
+--删除账户
+--使用root登录，然后将mysql数据库中user表中所对应的要删除的账户给删除掉，然后刷新权限即可
+delete from user where user="要删除的账户名";
+
+'''附录：FAQ'''
 1、提示您在使用安全的update模式，只能通过主键对表进行修改
 You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.
 SET SQL_SAFE_UPDATES = 0;0 不启用；1 启用
